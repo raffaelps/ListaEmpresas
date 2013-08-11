@@ -14,5 +14,6 @@
 }
 
 @property (nonatomic,retain)IBOutlet UITableView *tabelaEmpresas;
+@property (nonatomic,retain)IBOutlet UIBarButtonItem *botaoEditar;
 
 @end

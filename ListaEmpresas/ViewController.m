@@ -89,4 +89,34 @@
     [self.tabelaEmpresas deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [empresas removeObjectAtIndex:indexPath.row];
+    [self.tabelaEmpresas reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Remover";
+}
+
+- (IBAction)botaoEditarTag:(id)sender
+{
+    if ([self.botaoEditar.title isEqualToString:@"Editar"])
+    {
+        [self.tabelaEmpresas setEditing:YES animated:YES];
+        self.botaoEditar.title = @"Pronto";
+    }
+    else
+    {
+        [self.tabelaEmpresas setEditing:NO animated:YES];
+        self.botaoEditar.title = @"Editar";
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
 @end
